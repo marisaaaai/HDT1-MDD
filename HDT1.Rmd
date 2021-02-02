@@ -1,0 +1,73 @@
+---
+title: "Análisis Exploratorio"
+author: "GRUPO 6"
+date: "2/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, include=FALSE}
+datos <- read.csv(file = 'tmdb-movies.csv')
+```
+
+# Hoja de Trabajo #1  
+## Informe de análisis exploratorio de los carros  
+
+En este informe usted podrá leer los hallazgos de EDA.
+
+### Descripción del conjunto de datos
+El conjunto de datos está compuesto por 
+```{r, echo=FALSE}
+nrow(datos)
+```
+observaciones de 
+```{r, echo=FALSE}
+ncol(datos)
+```
+variables.  
+```{r, echo=FALSE}
+summary(datos)
+```
+
+
+Las variables y su tipo dentro del data set son:
+```{r, echo=FALSE}
+str(datos)
+```
+
+Los histogramas para comprobar normalidad en los datos cuantitativos de los data sets son los siguientes.  
+```{r}
+hist(x= datos$id, main=paste("Histograma de ID"))
+hist(x= datos$popularity, main=paste("Histograma de Popularity"))
+hist(x= datos$budget, main=paste("Histograma de Budget"))
+hist(x= datos$revenue, main=paste("Histograma de revenue"))
+hist(x= datos$vote_count, main=paste("Histograma de vote count"))
+hist(x= datos$vote_average, main=paste("Histograma de votr average"))
+hist(x= datos$release_year, main=paste("Histograma de Release year"))
+hist(x= datos$budget_adj, main=paste("Histograma de Budget adj"))
+hist(x= datos$revenue_adj, main=paste("Histograma de Revenue ADJ"))
+```
+
+Para tablas de frecuencias de las variables cualitativas se se mostraran las líneas de código ya que los resultados de algunas toman muchos  espacio, las lineas de código son las siguientes son las siguientes:  
+
+## imbd_id    
+`
+IMBD_ID <- c(datos$imdb_id)
+table(IMBD_ID)
+`  
+
+## cast
+`
+cast <- c(datos$cast)
+table(cast)
+`
+
+## homepage
+```{r}
+hp <- c(datos$homepage)
+table(hp)
+```
+
+
