@@ -65,9 +65,30 @@ table(cast)
 `
 
 ## homepage
-```{r}
+`
 hp <- c(datos$homepage)
 table(hp)
+`
+
+## director
+`
+director <- c(datos$director)
+table(director)
+`
+```{r echo=FALSE}
+director <- c(datos$director)
+head(director,10)
 ```
 
 
+## tagline
+
+##keywords
+
+##overview
+
+##genres
+
+##production_companies
+
+##release_date
