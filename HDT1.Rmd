@@ -75,20 +75,120 @@ table(hp)
 director <- c(datos$director)
 table(director)
 `
-```{r echo=FALSE}
-director <- c(datos$director)
-head(director,10)
+
+## tagline
+`
+tagline <- (datos$tagline)
+table (tagline)
+`
+
+##keywords
+`
+keywords <-(datos$keywords)
+table(keywords)
+`
+##overview
+`
+overview <-(datos$overview)
+table(overview)
+`
+##genres
+`
+genres <- c(datos$genres)
+table(genres)
+`
+##production_companies
+`
+production_companies <- c(datos$production_companies)
+table(production_companies)
+`
+
+##release_date
+`
+release_date <- c(datos$release_date)
+table(release_date)
+`
+
+
+##¿Cuáles son las 10 películas que contaron con más presupuesto?
+
+```{r}
+library(tidyverse)
+datos %>% top_n(10, datos$budget)
+
 ```
 
 
-## tagline
+##¿Cuáles son las 10 películas que más ingresos tuvieron?
 
-##keywords
+```{r}
+library(tidyverse)
+datos %>% top_n(10, datos$revenue)
+```
 
-##overview
+##¿Cuál es la película que más votos tuvo?
 
-##genres
+```{r}
+datos[which.max(datos$vote_count),]
 
-##production_companies
+```
 
-##release_date
+##¿Cuál es la peor película de acuerdo a los votos de todos los usuarios?
+
+```{r}
+datos[which.min(datos$vote_count),]
+```
+
+##¿Cuántas  películas  se  hicieron en  cada  año? ¿En qué año  se  hicieron  
+##más películas? Haga un gráfico de barras
+```{r}
+hola <- table(datos$release_year)
+barplot(hola,main="Barra de datos de release year",xlab="Year",ylab="Frecuencia")
+
+
+```
+
+##¿Cuál es el género principal de las 20 películas más populares?
+```{r}
+library(tidyverse)
+subdatos <- datos %>% top_n(20, datos$popularity)
+generos <-(subdatos$genres)
+table(generos)
+```
+
+##¿Cuál  es  el  género  que  predomina  en  el conjunto  de  datos? 
+```{r}
+genres <- table(datos$genres)
+barplot(genres,main= "Genero",xlab="Generos",ylab="Frecuencia")
+
+```
+
+##¿Las películas de qué género principal obtuvieron mayores ganancias?
+```{r}
+genres <- table(datos$genres)
+ganancias <- table(datos$revenue)
+barplot(genres,ganancias,main= "Genero",xlab="Generos",ylab="Ganancias")
+```
+
+##¿Las películas de qué género principal necesitaron mayor presupuesto?
+```{r}
+genres <- table(datos$genres)
+presupuesto <- table(datos$budget)
+barplot(genres,presupuesto,main= "Genero",xlab="Generos",ylab="Presupuesto")
+```
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
