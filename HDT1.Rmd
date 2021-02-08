@@ -178,6 +178,49 @@ barplot(genres,presupuesto,main= "Genero",xlab="Generos",ylab="Presupuesto")
 ```
 ```
 
+##¿Quiénes son los 20 mejores directores que hicieron películas altamente calificadas?
+```{r}
+library(tidyverse)
+subdatoss <- datos %>% top_n(20, datos$vote_count)
+directores <-(subdatoss$director)
+table(directores)
+```
+
+##  ¿Cómo  se  correlacionan  los  presupuestos  con  los  ingresos?  ¿Los  altos presupuestos  significan   altos  ingresos?  Haga  los  gráficos que  necesite,histograma,diagrama de dispersión.
+```{r}
+plot(x=datos$revenue, y=datos$budget, main = "Presupuesto vs. Ingresos", xlab="Ingresos", ylab="Presupuesto")
+```
+
+## ¿Se asocian ciertos meses de lanzamiento con mejores ingresos?
+```{r}
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+
+plot(x=month(as.POSIXlt(datos$release_date, format = "%m/%d/%y")), y=datos$revenue, main = "Ingresos vs Meses", xlab="Meses", ylab="Ingresos")
+
+```
+
+## ¿En qué meses se han visto los lanzamientos máximos?
+```{r}
+meses <- table(month(as.POSIXlt(datos$release_date, format = "%m/%d/%y")))
+barplot(meses,main= "Lanzamientos x mes",xlab="Meses",ylab="Frecuencia")
+```
+
+## ¿Cómo se correlacionan las calificaciones con el éxito comercial?
+```{r}
+plot(x=datos$vote_average, y=datos$popularity, main = "Popularidad comercial vs. Calificación", xlab="Calificacion", ylab="Popularidad Comercial")
+```
+
+## ¿A qué género principal pertenecen las películas más largas?
+```{r}
+genres <- table(datos$genres)
+tiempo <- table(datos$runtime)
+barplot(genres,tiempo,main= "Genero",xlab="Generos",ylab="Duración")
+```
+
+
+
 
 
 
